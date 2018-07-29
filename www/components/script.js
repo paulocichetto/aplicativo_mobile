@@ -11,118 +11,58 @@ $(document).on("click", "#btn-login", function(){
         type: "post",
         url: "https://tcc-paulocichetto.c9users.io/Paulo/Login/userauthentication.php",
         data: parametros,
-        dataType: "json",
+        dataType: "JSON",
         success: function(data){
-            identificacao = (data);
-            console.log(toString(identificacao));
-                do{
-                   if(identificacao == "precliente"){
-                        alert("Eres um pre cliente");   
-                        $(location).attr("href", "precliente/precliente.html");
-                        break;
+            alert("OLAAA");
+            $.each(data.usuarios, function(i, dados){
+                identificacao = dados.nm_categoria;
+                alert(identificacao);
+            });
+    
+            do{
+               if(identificacao == "Pre-cliente" || identificacao == "Pré-cliente"){
+                alert("Eres um pre cliente");   
+                    $(location).attr("href", "precliente/precliente.html");
+                    break;
+               } 
+               else if(identificacao=="Cliente"){
+                alert("E um cliente");
+                    break;
+               } 
+               else if(identificacao=="ADM"){
+                alert("E um adm");
+                    break;
                    } 
-                    else if(identificacao=="cliente"){
-                       alert("E um cliente");
-                        break;
-                   } 
-                   else if(identificacao=="adm"){
-                       alert("E um adm");
-                       break;
-                   } 
-                   else if(identificacao=="funcionario"){
+                   else if(identificacao=="Funcionário" || identificacao=="Funcionario"){
                         alert("E um funcionario");
                         break;
                    } 
                    else if(identificacao=="senha_incorreta"){
-                        alert("Senha Incorreta");
+                        alert("A senha está incorreta. Tente novamente.");
                         break;
                    } 
                    else if(identificacao=="invalido"){
-                       alert("Invalido");
+                       alert("Email ou senha inválidos.");
                        break;
                    }
                    else if(identificacao=="email_nao"){
-                       alert("Login nao existe");
+                       alert("O email inserido não corresponde a uma conta. Verifique seu email e tente novamente.");
                        break;
                    }
-                   else if(identificacao=="financeiro"){
-                       alert("Financeiro");
+                   else if(identificacao=="Financeiro"){
+                       alert("E doFinanceiro");
+                       break;
                    }
                  }
-                while (identificacao == "precliente" || identificacao == "cliente" || identificacao == "adm" || identificacao == "funcionario" || identificacao == "senha_incorreta" || identificacao == "invalido" || identificacao == "email_nao" || identificacao == "financeiro");
+                while (identificacao == "Pre-cliente" || identificacao == "Pré-cliente" || identificacao == "Cliente" || identificacao == "ADM" || identificacao=="Funcionário" || identificacao=="Funcionario" || identificacao == "senha_incorreta" || identificacao == "invalido" || identificacao == "email_nao" || identificacao == "Financeiro");
 
         },
         error: function(data){
             navigator.notification.alert(data);
+            alert('olaaa');
         } 
     });
-//    
-// do{
-//    if(identificacao == "precliente"){
-//         alert("Eres um pre cliente");   
-//         $(location).attr("href", "precliente/index.html");
-//         break;
-//    } 
-//     else if(identificacao=="cliente"){
-//        alert("E um cliente");
-//         $(location).attr("href", "login.html")
-//         break;
-//    } 
-//    else if(identificacao=="adm"){
-//        alert("E um adm");
-//        break;
-//    } 
-//    else if(identificacao=="funcionario"){
-//         alert("E um funcionario");
-//         break;
-//    } 
-//    else if(identificacao=="senha_incorreta"){
-//         alert("Senha Incorreta");
-//         break;
-//    } 
-//    else if(identificacao=="invalido"){
-//        alert("Invalido");
-//        break;
-//    }
-//    else if(identificacao=="email_nao"){
-//        alert("Login nao existe");
-//        break;
-//    }
-//    else if(identificacao=="financeiro"){
-//        alert("Financeiro");
-//    }
-//  }
-// while (identificacao == "precliente" || identificacao == "cliente" || identificacao == "adm" || identificacao == "funcionario" || identificacao == "senha_incorreta" || identificacao == "invalido" || identificacao == "email_nao" || identificacao == "financeiro");
-   //  if(identificacao == "precliente"){
-   //      alert("Eres um pre cliente");   
-   //      $(location).attr("href", "precliente/index.html");
-   // } 
-   //  else if(identificacao=="cliente"){
-   //     alert("E um cliente");78
-   //      $(location).attr("href", "login.html")
-   // } 
-   // else if(identificacao=="adm"){
-   //     alert("E um adm");
-   // } 
-   // else if(identificacao=="funcionario"){
-   //      alert("E um funcionario");
-   // } 
-   // else if(identificacao=="senha_incorreta"){
-   //      alert("Senha Incorreta");
-   // } 
-   // else if(identificacao=="invalido"){
-   //     alert("Invalido");
-   // }
-   // else if(identificacao=="email_nao"){
-   //     alert("Login nao existe");
-   // }
-   // else if(identificacao=="financeiro"){
-   //     alert("Financeiro");
-   // }
-  // else {
-  //      alert ("PROBLEMAS");
-  //  }
   
 });
-
-
+// 
+// //$(location).attr("href", "precliente/precliente.html");
